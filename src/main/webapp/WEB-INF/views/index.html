@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8" />
+    <title>Index Page</title>
+</head>
+<body>
+<h1>Đây là trang index</h1>
+<a href="/login">
+    <button type="submit">Login</button>
+</a>
+<div sec:authorize="isAuthenticated()">
+    Logged userTest: <span sec:authentication="name"></span> <br/>
+    Roles: <span sec:authentication="principal.authorities"></span>
+    <form action="#" th:action="@{/logout}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+</body>
+</html>
